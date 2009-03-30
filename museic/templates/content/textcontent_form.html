@@ -1,0 +1,18 @@
+{% block content %}
+
+<ul id="form_error_list">
+{% for field in form %}
+<li>{{ field.errors }}</li>
+{% endfor %}
+</ul>
+
+<form class="form" id="text_post" method="POST">
+<table>
+{{ form.user }}
+{{ form.title }}
+{{ form.text }}
+</table>
+<input type="submit" value="Post" />
+</form>
+
+{% endblock %}

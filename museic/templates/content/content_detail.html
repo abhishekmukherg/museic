@@ -1,0 +1,11 @@
+{% block content %}
+
+{% load humanize %}
+
+<div id="content">
+<h1 id="title">{{ object.title }}</h1>
+<h2 class="date">{{ object.pub_date|naturalday }}</h2>
+{{ object }}
+</div>
+
+{% endblock %}

@@ -66,6 +66,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'userprofile',
+    'djangoratings',
 
     'museic.accounts',
+    'museic.content',
 )
