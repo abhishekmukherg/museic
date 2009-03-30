@@ -1,0 +1,3 @@
+ * Write museic.content.views.by_name to replace current by_name representation,
+   does not allow duplicate slugs
+ * Implement aural content
