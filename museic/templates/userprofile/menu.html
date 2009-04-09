@@ -8,6 +8,5 @@
 		<li{% ifequal section "location" %} class="active"{% endifequal %}><a href="{% url profile_edit_location %}">{% trans "Location" %}</a></li>
 		<li{% ifequal section "delete" %} class="active"{% endifequal %}><a href="{% url profile_delete %}">{% trans "Remove profile" %}</a></li>
 	</ul>
-	<hr class="space" />
 </div>
 {% endif %}

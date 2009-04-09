@@ -1,53 +1,68 @@
-{% load i18n %}<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% load i18n %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>{% block title %}{% endblock %}</title>
-		<link rel="stylesheet" href="{{ MEDIA_URL}}userprofile/css/blueprint/screen.css" type="text/css" media="screen, projection" />
-		<link rel="stylesheet" href="{{ MEDIA_URL }}userprofile/css/blueprint/print.css" type="text/css" media="print" />
-		<link rel="stylesheet" href="{{ MEDIA_URL }}userprofile/css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
-		<!--[if IE]><link rel="stylesheet" href="{{ MEDIA_URL}}userprofile/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-		<link rel="stylesheet" href="{{ MEDIA_URL}}userprofile/css/django-profile.css" type="text/css" media="screen, projection" />
+    <title>MUSEiC | {% block title %}The Collaboratory{% endblock %}</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <link rel="stylesheet" href="{{ MEDIA_URL }}main.css" type="text/css" media="screen, projection" />
 		{% block extracss %}{% endblock %}
 
 		<script type="text/javascript" src="{{ MEDIA_URL }}userprofile/js/jquery-1.2.6.min.js"></script>
 		{% block extrajs %}{% endblock %}
 
-		<meta name="robots" content="{% block robots %}index,follow{% endblock %}" />
 </head>
 
 <body>
-	<div class="container">
+	<div id="wrapper">
 		<div id="header">
-			<div class="span-16">
-				<h1><a href="/"><strong>{% trans "Django profile demo" %}</strong></a></h1>
-				<p>{% trans "A django-profile demo application" %}</p>
+
+			<div id="header_logo" class="logo">
+				<h1><a href="index.html">museic.com</a> <span id="subtitle">the collaboratory</span></h1>
+
 			</div>
-			<div class="span-8 last">
-				<ul class="hmenu large three">
-					<li><a href="/">{% trans "Frontpage" %}</a></li>
-					{% if user.is_authenticated %}
-					<li><a href="{% url profile_overview %}">{% trans "Profile" %}</a></li>
-   				<li><a href="{% url logout %}">{% trans "Logout" %}</a></li>
-					{% else %} 
-					<li><a href="{% url profile_overview %}">{% trans "Login" %}</a></li>
-					<li><a href="{% url signup %}">{% trans "Register" %}</a></li>
-  				{% endif %}
-				</ul>
+			<div id="navwrap">
+				<ul id="navigation">
+				<li>
+					<a class="current" id="home" href="museic.html">home</a>
+				</li>
+				<li>
+				<a id="profile" href="{% url profile_overview %}">profile</a>
+				</li>
+				<li>
+					<a id="collab" href="collab.html">collaboration</a>
+				</li>
+				<li>
+					<a id="artists" href="artist.html">artists</a>
+				</li>
+				<li>
+					<a id="inbox" href="inbox.html">inbox</a>
+				</li>
+				<li>
+					<a id="upload" href="upload.html">upload</a>
+				</li>
+			</ul>
 			</div>
 		</div>
-		<hr />
-
-  	{% if messages %}
-  	<ul id="messages" class="span-24 last" style="list-style: none;">
-    	{% for message in messages %}
-    	<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
-    	{% endfor %}
-  	</ul>
-  	{% endif %}
-
-		{% block content %}{% endblock %}
-
+		{% if messages %}
+		<div id="messages"><ul style="list-style: none;"></div>
+		{% for message in messages %}
+		<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
 	</div>
+
+	<div id="footer">
+		<span class="logo">museic.com</span>
+		<a href="help.html">help!</a>
+		|
+		<a href="contact.html">contact</a>
+	</div>
+
+
+
 </body>
 </html>
