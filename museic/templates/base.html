@@ -17,52 +17,60 @@
 		<div id="header">
 
 			<div id="header_logo" class="logo">
-				<h1><a href="index.html">museic.com</a> <span id="subtitle">the collaboratory</span></h1>
+				<h1 id="logo"> museic.com <span id="sub"> the collaboratory </span><span id="topglinks">
+							<a href="help.html">help</a>
+							| 
+							<a href="contact.html">contact</a>
+						</span>
+					</h1>
 
+					
+				</div>
+								<div id="navwrap">
+					<li class="navlist">
+					<a class="nav" id="home" href="museic.html">home</a>
+					</li>
+					<li class="navlist">
+					<a class="nav" id="profile" href="profile.html">profile</a>
+					</li>
+					<li class="navlist">
+					<a class="nav" id="collab" href="collab.html">collaboration</a>
+					</li>
+					<li class="navlist">
+					<a class="nav" id="artists" href="artist.html">artists</a>
+					</li>
+					<li class="navlist">
+					<a class="nav" id="inbox" href="inbox.html">inbox</a>
+					</li>
+					<li class="navlist">
+					<a class="nav" id="upload" href="upload.html">upload</a>
+					</li>
+								</div>
+					
 			</div>
-			<div id="navwrap">
-				<ul id="navigation">
-				<li>
-					<a class="current" id="home" href="museic.html">home</a>
-				</li>
-				<li>
-				<a id="profile" href="{% url profile_overview %}">profile</a>
-				</li>
-				<li>
-					<a id="collab" href="collab.html">collaboration</a>
-				</li>
-				<li>
-					<a id="artists" href="artist.html">artists</a>
-				</li>
-				<li>
-					<a id="inbox" href="inbox.html">inbox</a>
-				</li>
-				<li>
-					<a id="upload" href="upload.html">upload</a>
-				</li>
+			{% if messages %}
+			<div id="messages"><ul style="list-style: none;"></div>
+			{% for message in messages %}
+			<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
+			{% endfor %}
 			</ul>
-			</div>
-		</div>
-		{% if messages %}
-		<div id="messages"><ul style="list-style: none;"></div>
-		{% for message in messages %}
-		<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
-		{% endfor %}
-		</ul>
-		{% endif %}
-		<div id="content">
+			{% endif %}
+			
+			<div id="content">
 			{% block content %}{% endblock %}
+			</div>
+			
 		</div>
 	</div>
 
-	<div id="footer">
-		<span class="logo">museic.com</span>
-		<a href="help.html">help!</a>
-		|
-		<a href="contact.html">contact</a>
-	</div>
-
-
+		<div id="footer">
+			<span id="logo">museic.com</span>
+			<span id="bottomglinks">
+			<a id="footerlink" id="help" href="help.html">help!</a>
+			|
+			<a id="footerlink" id="contact" href="contact.html">contact</a>
+			</span>
+		</div>
 
 </body>
 </html>
