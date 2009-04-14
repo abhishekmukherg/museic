@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 import museic.content.models
 import itertools
 from os.path import join
@@ -11,7 +12,7 @@ detail_dict = dict(itertools.chain(textcontent_dict.iteritems(),
 
 list_dict = dict(itertools.chain(textcontent_dict.iteritems(),
                 {'template_name': join('content', 'content_list.html')}.iteritems()),
-                extra_context={'model_name': 'Text Collaborations'})
+                extra_context={'model_name': _('Text Collaborations')})
 
 
 urlpatterns = patterns('',    

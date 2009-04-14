@@ -1,7 +1,7 @@
 {% load i18n %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>MUSEiC | {% block title %}The Collaboratory{% endblock %}</title>
+    <title>{% trans "MUSEiC" %} | {% block title %}The Collaboratory{% endblock %}</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
     <link rel="stylesheet" href="{{ MEDIA_URL }}main.css" type="text/css" media="screen, projection" />
@@ -17,34 +17,45 @@
 		<div id="header">
 
 			<div id="header_logo" class="logo">
-				<h1 id="logo"> museic.com <span id="sub"> the collaboratory </span><span id="topglinks">
-							<a href="help.html">help</a>
+				<h1 id="logo">{% trans "museic.com" %} <span id="sub"> {% trans "the collaboratory" %} </span><span id="topglinks">
+							<a href="help.html">{% trans "help" %}</a>
 							| 
-							<a href="contact.html">contact</a>
+							<a href="contact.html">{% trans "contact" %}</a>
 						</span>
 					</h1>
 
 					
 				</div>
+					<div id="global_user_box">
+					<ul>
+						{% if user.is_authenticated %}
+						<li><a href="{% url profile_overview %}">{% trans "Profile" %}</a></li>
+						<li><a href="{% url logout %}">{% trans "Logout" %}</a></li>
+						{% else %}
+						<li><a href="{% url profile_overview %}">{% trans "Login" %}</a></li>
+						<li><a href="{% url signup %}">{% trans "Register" %}</a></li>
+						{% endif %}
+					</ul>
+					</div>
 					<div id="navwrap">
 					{% load navigation %}
 					<li class="navlist">
-					<a class="nav {% active request "^/$" %}" id="home" href="{% url home %}">home</a>
+					<a class="nav {% active request "^/$" %}" id="home" href="{% url home %}">{% trans "home" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">profile</a>
+					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">{% trans "profile" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/content/text/(?!post)" %}" id="collab" href="{% url textcontent_object_list %}">collaboration</a>
+					<a class="nav {% active request "^/content/text/(?!post)" %}" id="collab" href="{% url textcontent_object_list %}">{% trans "collaboration" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">artists</a>
+					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">{% trans "artists" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/inbox/" %}" id="inbox" href="inbox.html">inbox</a>
+					<a class="nav {% active request "^/inbox/" %}" id="inbox" href="inbox.html">{% trans "inbox" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/content/[^/]+/post" %}" id="upload" href="{% url textcontent_create_object %}">upload</a>
+					<a class="nav {% active request "^/content/[^/]+/post" %}" id="upload" href="{% url textcontent_create_object %}">{% trans "upload" %}</a>
 					</li>
 					</div>
 					
@@ -67,9 +78,9 @@
 		<div id="footer">
 			<span id="logo">museic.com</span>
 			<span id="bottomglinks">
-			<a id="footerlink" id="help" href="help.html">help!</a>
+			<a id="footerlink" id="help" href="help.html">{% trans "help" %}</a>
 			|
-			<a id="footerlink" id="contact" href="contact.html">contact</a>
+			<a id="footerlink" id="contact" href="contact.html">{% trans "contact" %}</a>
 			</span>
 		</div>
 
