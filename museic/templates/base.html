@@ -29,13 +29,13 @@
 					<div id="navwrap">
 					{% load navigation %}
 					<li class="navlist">
-					<a class="nav {% active request "^/$" %}" id="home" href="museic.html">home</a>
+					<a class="nav {% active request "^/$" %}" id="home" href="{% url home %}">home</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/accounts/" %}" id="profile" href="profile.html">profile</a>
+					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">profile</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/collab/" %}" id="collab" href="collab.html">collaboration</a>
+					<a class="nav {% active request "^/content/text/(?!post)" %}" id="collab" href="{% url textcontent_object_list %}">collaboration</a>
 					</li>
 					<li class="navlist">
 					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">artists</a>
@@ -44,7 +44,7 @@
 					<a class="nav {% active request "^/inbox/" %}" id="inbox" href="inbox.html">inbox</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/upload/" %}" id="upload" href="{% url textcontent_create_object %}">upload</a>
+					<a class="nav {% active request "^/content/[^/]+/post" %}" id="upload" href="{% url textcontent_create_object %}">upload</a>
 					</li>
 					</div>
 					

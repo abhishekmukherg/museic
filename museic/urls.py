@@ -8,6 +8,11 @@ import museic.content.settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$',
+        'django.views.generic.simple.direct_to_template',
+        {'template': 'base.html'},
+        name="home",
+        ),
     (r'^accounts/', include('userprofile.urls')),
     (r'^content/', include('content.urls')),
 
