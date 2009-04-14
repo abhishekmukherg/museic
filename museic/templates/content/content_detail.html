@@ -1,12 +1,14 @@
 {% extends "content/base.html" %}
 
+{% block title %}{{ object.title }}{% endblock %}
+
 {% block content_content %}
 
 {% load humanize %}
 
-<div id="content">
-<h1 id="title">{{ object.title }}</h1>
-<h2 class="date">{{ object.pub_date|naturalday }}</h2>
+<div id="content_details">
+<h1>{{ object.title }}</h1>
+<h2>{{ object.pub_date|naturalday }}</h2>
 {{ object }}
 </div>
 

@@ -1,19 +1,33 @@
 {% extends "content/base.html" %}
+
+{% block title %}Upload Text{% endblock %}
+
 {% block content_content %}
 
-<ul id="form_error_list">
-{% for field in form %}
-<li>{{ field.errors }}</li>
-{% endfor %}
-</ul>
-
 <form class="form" id="text_post" method="POST">
+<fieldset>
+<legend>Text Content</legend>
 <table>
-{{ form.user }}
-{{ form.title }}
-{{ form.text }}
+	{{ form.as_table }}
+	<!--
+	<tr>
+		<th>{{ form.title.label_tag }}</th>
+		<td>{{ form.title }}</td>
+		{% if form.title.errors %}
+			<td class="error">form.title.errors</td>
+		{% endif %}
+	</tr>
+	<tr>
+		<th>{{ form.text.label_tag }}</th>
+		<td>{{ form.text }}</td>
+		{% if form.text.errors %}
+			<td class="error">form.text.errors</td>
+		{% endif %}
+	</tr>
+	-->
 </table>
 <input type="submit" value="Post" />
+</fieldset>
 </form>
 
 {% endblock %}

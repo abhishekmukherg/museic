@@ -14,7 +14,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = '/var/tmp/museic.db'
+DATABASE_NAME = '/tmp/museic.db'
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''

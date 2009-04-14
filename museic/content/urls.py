@@ -19,7 +19,9 @@ urlpatterns = patterns('',
         kwargs=info_dict,
         name="textcontent_details_slug"),
         
-    (r'^text/post/',
+    url(r'^text/post/',
         'django.views.generic.create_update.create_object',
-        {'model': museic.content.models.TextContent}),
+        {'model': museic.content.models.TextContent,
+            'login_required': True},
+        name="textcontent_create_object"),
 )

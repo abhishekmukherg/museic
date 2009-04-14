@@ -1,7 +1,7 @@
 html {height: 100%;}
 body {font-family: Geneva, Arial, sans-serif; margin: 0 auto; padding: 0; height:100%; width:50em; color: white;}
 div#wrapper {min-height: 100%; position:relative; width: 50em;}
-div#content {padding-bottom: 9em; color: black;}
+div#content {padding-bottom: 2em; color: black;}
 
 div#header {height: 69px; width: 100%; background-color:rgb(255,133,46);}
 div#header_logo {height: 3em; width:80%; background-color:rgb(255,164,45);}
@@ -22,4 +22,10 @@ span#logo {margin: 0; padding-left: 5px; font-size: 19px;}
 span#sub {font-size:10px; align: left;}
 a#footerlink {text-decoration: none; color: white; font-size: 9px;}
 span#bottomglinks {font-size: 9px;}
+
+form#text_post textarea { height: 30em; }
+
+form#text_post table,
+form#text_post textarea#id_text {width: 100%;}
+
 
