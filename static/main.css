@@ -11,7 +11,7 @@ a#hcheadlink {float:right; text-decoration: none; color: white; font-size: 9px;}
 div#navwrap {padding-left: 100px;}
 a.nav {font:InaiMathi; color: white; margin: 0; background: none repeat scroll 0 0; float:left; font-size:14px; padding:1px 8px; text-decoration:none; width: auto; }
 li.navlist {list-style-image:none; list-style-position:outside; list-style-type:none; margin:0;}
-a#home {background: white; color: #faa330}
+a.nav.active {background: white; color: #faa330}
 span#topglinks {font-size: 9px;}
 span#topglinks a {text-decoration: none; color:white; valign: top;}
 
