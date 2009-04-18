@@ -58,9 +58,10 @@
 					
 			</div>
 			{% if messages %}
-			<div id="messages"><ul style="list-style: none;"></div>
+			<div id="messages"><ul style="list-style: none;">
 			{% for message in messages %}
 			<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
+			</div>
 			{% endfor %}
 			</ul>
 			{% endif %}

@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
+    'django.contrib.comments',
 
     'userprofile',
     'djangoratings',
@@ -79,4 +80,5 @@ INSTALLED_APPS = (
     'museic.accounts',
     'museic.content',
     'museic.navigation',
+    'museic.microformats',
 )

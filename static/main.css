@@ -14,6 +14,9 @@ div#global_user_box a:hover,
 div#global_user_box a:active,
 div#global_user_box a:visited { color: white; text-decoration: none; }
 div#global_user_box li {list-style-image:none; list-style-position:outside; list-style-type:none; margin:0;}
+div#messages {color: black; background-color: #ffdfb2; padding: 0.5em;}
+div#messages ul,
+div#messages li {padding: 0; margin: 0;}
 a#hcheadlink {float:right; text-decoration: none; color: white; font-size: 9px;}
 
 div#navwrap {padding-left: 100px;}
