@@ -18,9 +18,6 @@
 
 			<div id="header_logo" class="logo">
 				<h1 id="logo">{% trans "museic.com" %} <span id="sub"> {% trans "the collaboratory" %} </span><span id="topglinks">
-							<a href="help.html">{% trans "help" %}</a>
-							| 
-							<a href="contact.html">{% trans "contact" %}</a>
 						</span>
 					</h1>
 
@@ -46,7 +43,7 @@
 					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">{% trans "profile" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/content/text/(?!post)" %}" id="collab" href="{% url textcontent_object_list %}">{% trans "collaboration" %}</a>
+					<a class="nav {% active request "^/collaborations/text/(?!post)" %}" id="collab" href="{% url textcontent_object_list %}">{% trans "collaboration" %}</a>
 					</li>
 					<li class="navlist">
 					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">{% trans "artists" %}</a>
@@ -55,7 +52,7 @@
 					<a class="nav {% active request "^/inbox/" %}" id="inbox" href="inbox.html">{% trans "inbox" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/content/[^/]+/post" %}" id="upload" href="{% url textcontent_create_object %}">{% trans "upload" %}</a>
+					<a class="nav {% active request "^/collaborations/[^/]+/post" %}" id="upload" href="{% url textcontent_create_object %}">{% trans "upload" %}</a>
 					</li>
 					</div>
 					
@@ -78,9 +75,11 @@
 		<div id="footer">
 			<span id="logo">museic.com</span>
 			<span id="bottomglinks">
-			<a id="footerlink" id="help" href="help.html">{% trans "help" %}</a>
+			<a class="footerlink" id="help" href="help.html">{% trans "help" %}</a>
 			|
-			<a id="footerlink" id="contact" href="contact.html">{% trans "contact" %}</a>
+			<a class="footerlink" id="contact" href="contact.html">{% trans "contact" %}</a>
+			|
+			<a class="footerlink" id="license" href="http://creativecommons.org/licenses/by/2.0/" rel="license">{% trans "license" %}</a>
 			</span>
 		</div>
 

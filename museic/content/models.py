@@ -10,6 +10,7 @@ from djangoratings import RatingField
 
 from django.contrib.humanize.templatetags import humanize
 import re
+import tagging
 
 _WHITESPACE_REGEX = re.compile(r'\W')
 
@@ -48,6 +49,7 @@ class Content(models.Model):
     class Meta:
         abstract = True
 
+
 class TextContent(Content):
     
     """
@@ -62,3 +64,5 @@ class TextContent(Content):
     @models.permalink
     def get_absolute_url(self):
         return ("textcontent_details_id", [str(self.id)])
+
+tagging.register(Content)

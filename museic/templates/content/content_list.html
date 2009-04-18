@@ -1,0 +1,20 @@
+{% extends "content/base.html" %}
+
+{% block title %}{{ model_name|capfirst }}{% endblock %}
+
+{% block content %}
+{% load navigation %}
+
+<h1>{{ model_name }}</h1>
+
+<ul class="objectlist">
+{% for object in object_list %}
+<li class="{% cycle 'odd' 'even' %}"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+{% endfor %}
+</ul>
+{% if is_paginated %}
+{{ paginator }}
+{% endif %}
+
+{% endblock %}
+
