@@ -1,10 +1,15 @@
 {% extends "content/base.html" %}
 
-{% block title %}Upload Text{% endblock %}
+{% block title %}Upload{% endblock %}
 
 {% block content_content %}
 
-<form class="form" id="text_post" method="POST">
+<form class="form" id="text_post" method="POST"
+	{% if form.is_multipart %}
+	enctype="multipart/form-data"
+	{% endif %}
+	>
+	
 <fieldset>
 <legend>Text Content</legend>
 <table>

@@ -7,12 +7,20 @@ Content data. Currently holds Content types
 from django.contrib.auth.models import User
 from django.db import models
 from djangoratings import RatingField
-
+from django.core.files.storage import FileSystemStorage
 from django.contrib.humanize.templatetags import humanize
+from museic import settings
 import re
 import tagging
 
 _WHITESPACE_REGEX = re.compile(r'\W')
+
+assert hasattr(settings, "MUSEIC_CONTENT_ROOT"), "You need to define a "\
+                                "folder to store your content for MUSEIC in"
+assert hasattr(settings, "MUSEIC_CONTENT_PREFIX"), "You need to define a "\
+                                "prefix to get your content for MUSEIC in"
+_FILE_STORAGE = FileSystemStorage(location=settings.MUSEIC_CONTENT_ROOT,
+                                  base_url=settings.MUSEIC_CONTENT_PREFIX)
 
 FIVE_STARS = [(n, u"%s stars" % unicode(humanize.apnumber(n)))
                     for n in xrange(5)]
@@ -65,4 +73,17 @@ class TextContent(Content):
     def get_absolute_url(self):
         return ("textcontent_details_id", [str(self.id)])
 
-tagging.register(Content)
+class AudioContent(Content):
+
+    """
+    Content with sound
+    """
+
+    file = models.FileField(storage=_FILE_STORAGE, upload_to="audio/%Y/%m/%d")
+
+    def __unicode__(self):
+        return self.file.url
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('audiocontent_details_id', [str(self.id)])

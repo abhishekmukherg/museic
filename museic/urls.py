@@ -23,14 +23,14 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^%s(?P<path>.*)$' % (settings.MEDIA_URL.lstrip('/')),
+        (r'^%s/(?P<path>.*)$' % (settings.MEDIA_URL.strip('/')),
          'django.views.static.serve',
                 {
                     'document_root': settings.MEDIA_ROOT,
                 }),
-        (r'^dynamic/(?P<path>.*)$',
+        (r'^%s/(?P<path>.*)$' % settings.MUSEIC_CONTENT_PREFIX.strip('/'),
          'django.views.static.serve',
                 {
-                    'document_root': museic.content.settings.CONTENT_MEDIA_ROOT
+                    'document_root': settings.MUSEIC_CONTENT_ROOT,
                 }),
     )
