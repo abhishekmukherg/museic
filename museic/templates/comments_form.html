@@ -1,0 +1,32 @@
+{% load comments %}
+{% load i18n %}
+
+{% block comment_form %}
+
+{% get_comment_form for object as form %}
+{% if user.is_authenticated %}
+<div id="submit_comment" class="comment-form">
+<form action="{% comment_form_target %}" method="POST">
+<fieldset>
+<legend>{% trans "Submit your comment" %}</legend>
+{{ form.comment.label_tag }}
+{{ form.field.errors }}{{ form.comment }}
+
+
+<p style="display: none;">
+{{ form.honeypot.label_tag }}{{ form.honeypot }}
+</p>
+
+{{ form.content_type }}
+{{ form.object_pk }}
+{{ form.timestamp }}
+{{ form.security_hash }}
+<input type="hidden" name="next" value="{{ object.get_absolute_url }}" />
+
+<input type="submit" name="preview" class="submit_post" value="Preview" />
+</fieldset>
+</form>
+</div>
+{% endif %}
+
+{% endblock %}
