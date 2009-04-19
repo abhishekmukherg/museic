@@ -86,4 +86,5 @@ INSTALLED_APPS = (
     'museic.content',
     'museic.navigation',
     'museic.microformats',
+    'museic.ajax',
 )
