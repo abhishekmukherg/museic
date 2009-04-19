@@ -59,6 +59,9 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 ROOT_URLCONF = 'museic.urls'
 
 AUTH_PROFILE_MODULE = 'accounts.userprofile'
+ABSOLUTE_URL_OVERRIDES = {
+        'auth.user': lambda o: '/accounts/profile/%s' % o.username,
+        }
 
 TEMPLATE_DIRS = (
     os.path.join(CUR_DIRECTORY, 'templates')
