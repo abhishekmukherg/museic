@@ -9,6 +9,8 @@ from django.db import models
 from djangoratings import RatingField
 from django.core.files.storage import FileSystemStorage
 from django.contrib.humanize.templatetags import humanize
+from django.utils.translation import ugettext as _
+from django.utils.safestring import mark_safe
 from museic import settings
 import re
 import tagging
@@ -82,7 +84,22 @@ class AudioContent(Content):
     file = models.FileField(storage=_FILE_STORAGE, upload_to="audio/%Y/%m/%d")
 
     def __unicode__(self):
-        return self.file.url
+        return mark_safe(u"""
+<p id="%(slug)s">%(message)s</p>  
+<script type="text/javascript">  
+    AudioPlayer.embed("%(slug)s", {
+        soundFile: "%(url)s",
+        titles: "%(title)s",
+        artists: "%(artist)s",
+        autostart: "yes"
+        });  
+</script>
+""" % {'slug': unicode(self.slug).replace('"', ''),
+        'message': _('We cannot detect your Flash player'),
+        'url': self.file.url,
+        'title': unicode(self.title).replace('"', ''),
+        'artist': unicode(self.user).replace('"', ''),
+        })
 
     @models.permalink
     def get_absolute_url(self):
