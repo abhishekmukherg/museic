@@ -7,12 +7,22 @@ Content data. Currently holds Content types
 from django.contrib.auth.models import User
 from django.db import models
 from djangoratings import RatingField
-
+from django.core.files.storage import FileSystemStorage
 from django.contrib.humanize.templatetags import humanize
+from django.utils.translation import ugettext as _
+from django.utils.safestring import mark_safe
+from museic import settings
 import re
 import tagging
 
 _WHITESPACE_REGEX = re.compile(r'\W')
+
+assert hasattr(settings, "MUSEIC_CONTENT_ROOT"), "You need to define a "\
+                                "folder to store your content for MUSEIC in"
+assert hasattr(settings, "MUSEIC_CONTENT_PREFIX"), "You need to define a "\
+                                "prefix to get your content for MUSEIC in"
+_FILE_STORAGE = FileSystemStorage(location=settings.MUSEIC_CONTENT_ROOT,
+                                  base_url=settings.MUSEIC_CONTENT_PREFIX)
 
 FIVE_STARS = [(n, u"%s stars" % unicode(humanize.apnumber(n)))
                     for n in xrange(5)]
@@ -65,4 +75,32 @@ class TextContent(Content):
     def get_absolute_url(self):
         return ("textcontent_details_id", [str(self.id)])
 
-tagging.register(Content)
+class AudioContent(Content):
+
+    """
+    Content with sound
+    """
+
+    file = models.FileField(storage=_FILE_STORAGE, upload_to="audio/%Y/%m/%d")
+
+    def __unicode__(self):
+        return mark_safe(u"""
+<p id="%(slug)s">%(message)s</p>  
+<script type="text/javascript">  
+    AudioPlayer.embed("%(slug)s", {
+        soundFile: "%(url)s",
+        titles: "%(title)s",
+        artists: "%(artist)s",
+        autostart: "yes"
+        });  
+</script>
+""" % {'slug': unicode(self.slug).replace('"', ''),
+        'message': _('We cannot detect your Flash player'),
+        'url': self.file.url,
+        'title': unicode(self.title).replace('"', ''),
+        'artist': unicode(self.user).replace('"', ''),
+        })
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('audiocontent_details_id', [str(self.id)])

@@ -33,6 +33,8 @@ SITE_ID = 1
 MEDIA_ROOT = os.path.join(CUR_DIRECTORY, os.path.pardir, 'static')
 MEDIA_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static-admin/'
+MUSEIC_CONTENT_ROOT = os.path.join(CUR_DIRECTORY, os.pardir, "dynamic")
+MUSEIC_CONTENT_PREFIX = '/dynamic/'
 
 SECRET_KEY = '0mn**5qi^6=+xlr_q2(1+^6agwx2ua&37m=(4+cfz(n8g4r78t'
 

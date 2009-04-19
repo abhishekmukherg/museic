@@ -5,16 +5,30 @@
 
 {% block title %}{{ object.title }}{% endblock %}
 
+{% block extrajs %}
+{{ block.super }}
+<script type="text/javascript" src="/static/audio-player/audio-player.js"></script>  
+<script type="text/javascript">  
+	AudioPlayer.setup("/static/audio-player/player.swf", {  
+		width: 400,
+		animation: "no",
+		transparentpagebg: "yes"
+		});  
+</script>
+{% endblock %}
+
 {% block content_content %}
 
 {% load humanize %}
 
 <div id="content_details">
-	<div class="metadata">
-		<h1>{{ object.title }}</h1>
-		{{ object.pub_date|microformats_date:"pub_date" }}{{ object.pub_date|naturalday }}</abbr>
-		<div id="content_author" class="author">{{ object.user }}</div>
+<div class="metadata">
+	<h1>{{ object.title }}</h1>
+	{{ object.pub_date|microformats_date:"pub_date" }}{{ object.pub_date|naturalday }}</abbr>
+	<div id="content_author" class="author">
+		<a href="{{ object.user.get_absolute_url }}">{{ object.user }}</a>
 	</div>
+</div>
 {{ object }}
 	<div id="content_comments">
 		<h1>{% trans "Comments" %}</h1>
