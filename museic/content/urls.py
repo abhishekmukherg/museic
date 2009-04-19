@@ -12,46 +12,46 @@ def _get_dicts(model, model_name):
         {'template_name': join('content', 'content_detail.html')}.iteritems()))
     list = dict(itertools.chain(content.iteritems(),
         {'template_name': join('content', 'content_list.html'),
-            'model_name': model_name}.iteritems()))
+            'extra_context': {'model_name': model_name}}.iteritems()))
     return content, detail, list
 
-textcontent_dict, textdetail_dict, textlist_dict = _get_dicts(TextContent,
-                                                        "Text Collaborations")
+def _get_url_patterns(prefix, model_name, model, form_class):
+    main_dict, detail_dict, list_dict = _get_dicts(model, model_name)
+    return patterns('',
+        url(r'^%s/by-id/(?P<object_id>\d+)/$' % prefix,
+            'django.views.generic.list_detail.object_detail',
+            kwargs=detail_dict,
+            name="%scontent_details_id" % prefix,
+            ),
 
-audiocontent_dict, audiodetail_dict, audiolist_dict = _get_dicts(AudioContent,
-                                                        "Audio Collaborations")
+        url(r'^%s/by-name/(?P<slug>.*)/$' % prefix,
+            'django.views.generic.list_detail.object_detail',
+            kwargs=detail_dict,
+            name="%scontent_details_slug" % prefix,
+            ),
+            
+        url(r'^%s/post/' % prefix,
+            'museic.content.views.create_text_content',
+            kwargs={'form_class': form_class},
+            name="%scontent_create_object" % prefix,
+            ),
 
-urlpatterns = patterns('',    
-    url(r'^text/by-id/(?P<object_id>\d+)/$',
-        'django.views.generic.list_detail.object_detail',
-        kwargs=textdetail_dict,
-        name="textcontent_details_id"
-        ),
+        url(r'^%s/$' % prefix,
+            'django.views.generic.list_detail.object_list',
+            kwargs=list_dict,
+            name="%scontent_object_list" % prefix,
+            ),
+        )
 
-    url(r'^text/by-name/(?P<slug>.*)/$',
-        'django.views.generic.list_detail.object_detail',
-        kwargs=textdetail_dict,
-        name="textcontent_details_slug"),
-        
-    url(r'^text/post/',
-        'museic.content.views.create_text_content',
-        kwargs={'form_class': museic.content.forms.TextContentForm},
-        name="textcontent_create_object"),
+urlpatterns = _get_url_patterns('text',
+                                'Text Collaborations',
+                                TextContent,
+                                museic.content.forms.TextContentForm,
+                                )
 
-    url(r'^text/$',
-        'django.views.generic.list_detail.object_list',
-        kwargs=textlist_dict,
-        name="textcontent_object_list",
-        ),
+urlpatterns += _get_url_patterns('audio',
+                                'Audio Collaborations',
+                                AudioContent,
+                                museic.content.forms.AudioContentForm,
+                                )
 
-    url(r'^audio/post/$',
-        'museic.content.views.create_text_content',
-        kwargs={'form_class': museic.content.forms.AudioContentForm},
-        name="audiocontent_create_object"),
-
-    url(r'^audio/by-id/(?P<object_id>\d+)/$',
-        'django.views.generic.list_detail.object_detail',
-        kwargs=audiodetail_dict,
-        name="audiocontent_details_id",
-        ),
-)
