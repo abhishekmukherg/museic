@@ -1,5 +1,11 @@
 function submit_vote(href) {
-	$.post(href, {}, function(data) {}, "json");
+	$.post(href, {}, function(data) {
+		if (data.status == "success") {
+			var new_perc = (data.score * 100) / 5;
+			$('li.current-rating').attr('style',
+						'width: ' + new_perc + '%;')
+		}
+	}, "json");
 	return false;
 
 }
