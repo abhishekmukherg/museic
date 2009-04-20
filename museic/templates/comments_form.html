@@ -8,8 +8,7 @@
 <div id="submit_comment" class="comment-form">
 <form action="{% comment_form_target %}" method="POST">
 <fieldset>
-<legend>{% trans "Submit your comment" %}</legend>
-{{ form.comment.label_tag }}
+<legend>{% trans "Submit your " %}{{ form.comment.label_tag }}</legend>
 {{ form.field.errors }}{{ form.comment }}
 
 

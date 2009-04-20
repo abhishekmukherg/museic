@@ -38,7 +38,7 @@
 	</div>
 	<div class="rating">
 		<ul class="star-rating">
-		<li class="current-rating" style="width:{{ object.rating.score|rate_percentage:5 }}%;">Currently {{ object.rating.score }}/5 Stars.</li>
+		<li class="current-rating" style="width:{{ object.rating.score|rate_percentage:4 }}%;">Currently {{ object.rating.score }}/5 Stars.</li>
 		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=0" title="1 star out of 5" class="star_1">1</a></li>
 		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=1" title="2 stars out of 5" class="star_2">2</a></li>
 		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=2" title="3 stars out of 5" class="star_3">3</a></li>
@@ -47,7 +47,9 @@
 		</ul>
 	</div>
 </div>
+<div id="submitted_content">
 {{ object }}
+</div>
 {% include "comments.html" %}
 </div>
 

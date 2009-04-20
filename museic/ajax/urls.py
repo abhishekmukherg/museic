@@ -14,4 +14,4 @@ urlpatterns = patterns('museic.ajax.views',
             'ajax_vote',
             kwargs={'model': museic.content.models.AudioContent},
             ),
-        )
+)
