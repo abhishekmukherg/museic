@@ -7,7 +7,11 @@ from django.contrib.comments import signals
 from django.utils.translation import ugettext as _
 from museic.microformats.templatetags.microformats import microformats_date
 from django.contrib.humanize.templatetags.humanize import naturalday
+from django.http import Http404
+from django.template import TemplateDoesNotExist
+from django.shortcuts import get_object_or_404
 import simplejson
+import museic.content.views
 
 def json_error(error):
     status = simplejson.dumps({'status': 'debug', 'error': error})
@@ -102,3 +106,19 @@ def ajax_comment_post(request):
                                'day' : naturalday(comment.submit_date),
                                })
     return http.HttpResponse(status, mimetype='application/json')
+
+def ajax_vote(request, model):
+    try:
+        museic.content.views.vote(request, model)
+    except Http404:
+        return json_error("Could not register vote")
+    except TemplateDoesNotExist:
+        pass
+    instance = get_object_or_404(model, pk=int(request.REQUEST['id']))
+    status = simplejson.dumps({'status': 'success',
+                'votes': instance.rating.votes,
+                'score': instance.rating.score,
+                })
+    return http.HttpResponse(status, mimetype='spplication/json')
+
+

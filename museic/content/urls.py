@@ -17,6 +17,9 @@ def _get_dicts(model, model_name):
 
 def _get_url_patterns(prefix, model_name, model, form_class):
     main_dict, detail_dict, list_dict = _get_dicts(model, model_name)
+    if 'extra_context' not in detail_dict:
+        detail_dict['extra_context'] = {}
+    detail_dict['extra_context']['prefix'] = prefix
     return patterns('',
         url(r'^%s/by-id/(?P<object_id>\d+)/$' % prefix,
             'django.views.generic.list_detail.object_detail',
@@ -41,6 +44,10 @@ def _get_url_patterns(prefix, model_name, model, form_class):
             kwargs=list_dict,
             name="%scontent_object_list" % prefix,
             ),
+        url(r'^%s/rate/$' % prefix,
+            'museic.content.views.vote',
+            kwargs={'model': model},
+            name="%scontent_vote" % prefix),
         )
 
 urlpatterns = _get_url_patterns('text',
@@ -54,4 +61,3 @@ urlpatterns += _get_url_patterns('audio',
                                 AudioContent,
                                 museic.content.forms.AudioContentForm,
                                 )
-

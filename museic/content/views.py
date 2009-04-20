@@ -7,9 +7,10 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.views.generic.create_update import get_model_and_form_class
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.utils.translation import ugettext
+from django.shortcuts import get_object_or_404
 
 @login_required
 def create_text_content(request, model=None, form_class=None):
@@ -39,3 +40,16 @@ def create_text_content(request, model=None, form_class=None):
     })
     return HttpResponse(template.render(context))
 
+@login_required
+def vote(request, model):
+
+    if 'id' not in request.REQUEST or 'vote' not in request.REQUEST:
+        raise Http404
+    instance = get_object_or_404(model,pk=int(request.REQUEST['id']))
+    instance.rating.add(score=int(request.REQUEST['vote']),
+                            user=request.user,
+                            ip_address=request.META['REMOTE_ADDR'])
+    template = loader.get_template(os.path.join('content',
+        'vote_accepted.html'))
+    context = RequestContext(request)
+    return HttpResponse(template.render(context))

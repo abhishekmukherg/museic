@@ -2,12 +2,15 @@
 {% load i18n %}
 {% load comments %}
 {% load microformats %}
+{% load humanize %}
+{% load ratings %}
 
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block extrajs %}
 {{ block.super }}
-<script type="text/javascript" src="/static/audio-player/audio-player.js"></script>  
+<script type="text/javascript" src="{{ MEDIA_URL }}ratings.js"></script>  
+<script type="text/javascript" src="{{ MEDIA_URL }}audio-player/audio-player.js"></script>  
 <script type="text/javascript">  
 	AudioPlayer.setup("/static/audio-player/player.swf", {  
 		width: 400,
@@ -18,16 +21,30 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}post_comment.js"></script>
 {% endblock %}
 
+{% block extracss %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ MEDIA_URL }}ratings.css" type="text/css" media="screen, projection" />
+{% endblock %}
+
+
+
 {% block content_content %}
-
-{% load humanize %}
-
 <div id="content_details">
 <div class="metadata">
 	<h1>{{ object.title }}</h1>
 	{{ object.pub_date|microformats_date:"pub_date" }}{{ object.pub_date|naturalday }}</abbr>
 	<div id="content_author" class="author">
 		<a href="{{ object.user.get_absolute_url }}">{{ object.user }}</a>
+	</div>
+	<div class="rating">
+		<ul class="star-rating">
+		<li class="current-rating" style="width:{{ object.rating.score|rate_percentage:5 }}%;">Currently {{ object.rating.score }}/5 Stars.</li>
+		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=0" title="1 star out of 5" class="star_1">1</a></li>
+		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=1" title="2 stars out of 5" class="star_2">2</a></li>
+		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=2" title="3 stars out of 5" class="star_3">3</a></li>
+		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=3" title="4 stars out of 5" class="star_4">4</a></li>
+		<li><a href="{{ prefix|rate_url }}?id={{ object.id }}&vote=4" title="5 stars out of 5" class="star_5">5</a></li>
+		</ul>
 	</div>
 </div>
 {{ object }}
