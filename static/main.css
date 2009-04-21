@@ -65,3 +65,16 @@ div #submit_comment,
 div #submitted_content {
 -moz-border-radius: 0.8em; -khtml-border-radius: 0.8em; -webkit-border-radius: 0.8em; border-radius: 0.8em; 
 }
+#landingpage_links {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	min-height: 300px;
+}
+#landingpage_links img {
+	border: 0;
+}
+#landingpage_links li {
+	float: left;
+}

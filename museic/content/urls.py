@@ -61,3 +61,30 @@ urlpatterns += _get_url_patterns('audio',
                                 AudioContent,
                                 museic.content.forms.AudioContentForm,
                                 )
+urlpatterns += patterns('django.views.generic.simple',
+        url(r'^$',
+            'direct_to_template',
+            {'template': 'content/landing.html',
+                'extra_context': {
+                    'textcontent': '/collaborations/text/',
+                    'audiocontent': '/collaborations/audio/',
+                    'text_title': 'Create Text Collaboration',
+                    'audio_title': 'Create Audio Collaboration',
+                    },
+                },
+            name='content_collab_landing',
+            ),
+
+        url(r'^post/$',
+            'direct_to_template',
+            {'template': 'content/landing.html',
+                'extra_context': {
+                    'textcontent': '/collaborations/text/post/',
+                    'audiocontent': '/collaborations/audio/post/',
+                    'text_title': 'Text Collaborations',
+                    'audio_title': 'Audio Collaborations',
+                    },
+                },
+            name='content_post_landing',
+            )
+        )
