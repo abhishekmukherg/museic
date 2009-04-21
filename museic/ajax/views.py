@@ -10,7 +10,10 @@ from django.contrib.humanize.templatetags.humanize import naturalday
 from django.http import Http404
 from django.template import TemplateDoesNotExist
 from django.shortcuts import get_object_or_404
-import simplejson
+try:
+    import simplejson
+except ImportError:
+    from django.utils import simplejson
 import museic.content.views
 
 def json_error(error):
