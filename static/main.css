@@ -6,7 +6,7 @@ div#content {padding-bottom: 2.5em; color: black;}
 div#header {width: 100%; background-color:rgb(255,133,46); margin-bottom: 0.8em;}
 div#header, div#global_user_box {height: 4.2em;}
 div#header_logo {height: 3em; width:80%; background-color:rgb(255,164,45);}
-div#header_logo h1 {margin: 0; padding: 6px; color: white; padding-left: 14px; font-weight:lighter;}
+div#header_logo h1 {margin: 0; padding: 0.2em; color: white; padding-left: 0.5em; font-weight:lighter;}
 div#global_user_box { float: right; position: absolute; width: 20%; height: 4.2em; top: 0; right: 0; }
 div#global_user_box ul {margin: 0.1em; padding: 0; text-align: right;}
 div#global_user_box a:link,
@@ -17,34 +17,36 @@ div#global_user_box li {list-style-image:none; list-style-position:outside; list
 div#messages {color: black; background-color: #ffdfb2; padding: 0.5em;}
 div#messages ul,
 div#messages li {padding: 0; margin: 0;}
-a#hcheadlink {float:right; text-decoration: none; color: white; font-size: 9px;}
+a#hcheadlink {float:right; text-decoration: none; color: white; font-size: 0.8em;}
 
 div#navwrap {padding-left: 100px;}
-a.nav {font:InaiMathi; color: white; margin: 0; background: none repeat scroll 0 0; float:left; font-size:14px; padding:1px 8px; text-decoration:none; width: auto; }
+a.nav {font:InaiMathi; color: white; margin: 0; background: none repeat scroll 0 0; float:left; font-size:1.0em; padding:0.1em 0.4em; text-decoration:none; width: auto; }
 li.navlist {list-style-image:none; list-style-position:outside; list-style-type:none; margin:0;}
 a.nav.active {background: white; color: #faa330}
-span#topglinks {font-size: 9px;}
+span#topglinks {font-size: 0.8em;}
 span#topglinks a {text-decoration: none; color:white; valign: top;}
 
 
-div#footer {width: 50em; position: relative; height: 2em; top:-2em; padding: 0px; background-color:rgb(255,164,45);}
-span#logo {margin: 0; padding-left: 5px; font-size: 19px;}
+div#footer {width: 50em; position: relative; height: 2em; top:-2em; padding: 0; background-color:rgb(255,164,45);}
+span#logo {margin: 0; padding-left: 0.5em; font-size: 1.5em;}
 
-span#sub {font-size:10px; align: left;}
-a.footerlink {text-decoration: none; color: white; font-size: 9px;}
-span#bottomglinks {font-size: 9px;}
+span#sub {font-size:0.5em; align: left;}
+a.footerlink {text-decoration: none; color: white; font-size: 1em;}
+span#bottomglinks {font-size: 0.8em;}
 
 form#text_post textarea { height: 30em; }
 
 form#text_post table,
 form#text_post textarea#id_text {width: 100%;}
 
-div#submit_comment {padding-left: 10px; padding-right: 10px; width: 400px;background: rgb(255,240,244);}
-div #content_details .metadata {font-size: 12px; padding-left: 15px; padding-right: 15px; background:rgb(255,250,244);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width: 20%; float:left; margin-right: 1em; margin-bottom: 1em;}
+div#submit_comment {padding: 0.4em; width: 25em;background: rgb(255,240,244);}
+div#submit_comment textarea { width: 100%; }
+div#submit_comment fieldset { padding: 1.0em; }
+div #submitted_content .metadata {font-size: 1em; padding-left: 1.1em; padding-right: 1.1em; background:rgb(255,250,244); width: 20%; float:left; margin-right: 1em; margin-bottom: 1em;}
 
-div #content_comments h1 {padding-left: 15px;font-size: 1.4em;}
+div #content_comments h1 {padding-left: 2.0em;font-size: 1.4em;}
 
-div #submitted_content {font-size: 12px;-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;padding: 15px 20px 15px 20px; background: rgb(255,240,244); min-height: 10em;}
+div #submitted_content {font-size: 1em; padding: 15px 20px 15px 20px; background: rgb(255,240,244); min-height: 10em;}
 
 input.submit-post {border-color: orange;
 border-style:solid;
@@ -58,3 +60,8 @@ font-style:normal;
 font-variant:normal;
 font-weight:bold;
 line-height:normal;}
+div #submitted_content .metadata,
+div #submit_comment,
+div #submitted_content {
+-moz-border-radius: 0.8em; -khtml-border-radius: 0.8em; -webkit-border-radius: 0.8em; border-radius: 0.8em; 
+}
