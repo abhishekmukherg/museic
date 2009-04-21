@@ -40,11 +40,11 @@ form#text_post table,
 form#text_post textarea#id_text {width: 100%;}
 
 div#submit_comment {padding-left: 10px; padding-right: 10px; width: 400px;background: rgb(255,240,244);}
-div #content_details .metadata {font-size: 12px; padding-left: 15px; padding-right: 15px; background:rgb(255,250,244);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width: 20%; float:left;}
+div #content_details .metadata {font-size: 12px; padding-left: 15px; padding-right: 15px; background:rgb(255,250,244);-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width: 20%; float:left; margin-right: 1em; margin-bottom: 1em;}
 
 div #content_comments h1 {padding-left: 15px;font-size: 1.4em;}
 
-div #submitted_content {font-size: 12px;-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;padding: 15px 20px 15px 20px; background: rgb(255,240,244);}
+div #submitted_content {font-size: 12px;-moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;padding: 15px 20px 15px 20px; background: rgb(255,240,244); min-height: 10em;}
 
 input.submit-post {border-color: orange;
 border-style:solid;

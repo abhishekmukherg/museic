@@ -30,6 +30,7 @@
 
 {% block content_content %}
 <div id="content_details">
+<div id="submitted_content">
 <div class="metadata">
 	<h1>{{ object.title }}</h1>
 	{{ object.pub_date|microformats_date:"pub_date" }}{{ object.pub_date|naturalday }}</abbr>
@@ -47,7 +48,6 @@
 		</ul>
 	</div>
 </div>
-<div id="submitted_content">
 {{ object }}
 </div>
 {% include "comments.html" %}
