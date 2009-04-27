@@ -40,7 +40,7 @@
 					<a class="nav {% active request "^/$" %}" id="home" href="{% url home %}">{% trans "home" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">{% trans "profile" %}</a>
+					<a class="nav {% active request "^/(accounts|messages)/" %}" id="profile" href="{% url profile_overview %}">{% trans "profile" %}</a>
 					</li>
 					<li class="navlist">
 					<a class="nav {% active request "^/collaborations/(?!post)" %}" id="collab" href="{% url content_collab_landing %}">{% trans "collaboration" %}</a>
@@ -75,7 +75,7 @@
 			|
 			<a class="footerlink" id="contact" href="contact.html">{% trans "contact" %}</a>
 			|
-<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a>
 			</span>
 		</div>
 
