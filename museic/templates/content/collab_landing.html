@@ -1,0 +1,20 @@
+{% extends "content/base.html" %}
+
+{% block content_content %}
+<ul id="landingpage_links">
+	<li>
+	<a href="{% url textcontent_object_list %}"
+		class="image_replace"
+		id="text_collab">
+		<img src="{{ MEDIA_URL }}content/text.png" alt="{{ text_title }}" />
+	</a>
+	</li>
+	<li>
+	<a href="{% url audiocontent_object_list %}"
+		class="image_replace"
+		id="audio_collab">
+		<img src="{{ MEDIA_URL }}content/note.png" alt="{{ audio_title }}" />
+	</a>
+	</li>
+</li>
+{% endblock %}
