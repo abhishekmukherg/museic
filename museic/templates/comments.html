@@ -16,8 +16,7 @@
                     <a href="{{ comment.user.get_absolute_url }}">
                         {{ comment.user }}
                     </a>
-                </h2> {% trans "opened his big mouth on" %}
-                {{ comment.submit_date|microformats_date:"submit_date" }}{{ comment.submit_date|naturalday }}</h3>:
+                </h2>{{ comment.submit_date|microformats_date:"submit_date" }}{{ comment.submit_date|naturalday }}</h3>:
         </div>
         {{ comment.comment }}
     </div>
