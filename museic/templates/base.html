@@ -49,7 +49,7 @@
 					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">{% trans "artists" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/inbox/" %}" id="inbox" href="inbox.html">{% trans "inbox" %}</a>
+					<a class="nav {% active request "^/messages/" %}" id="inbox" href="{% url messages_inbox %}">{% trans "inbox" %}</a>
 					</li>
 					<li class="navlist">
 					<a class="nav {% active request "^/collaborations/([^/]+/)?post" %}" id="upload" href="{% url content_post_landing %}">{% trans "upload" %}</a>

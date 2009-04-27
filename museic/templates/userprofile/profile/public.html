@@ -37,6 +37,7 @@
 				{% if profile.location %}
 				<li>{% trans "Location" %}: <strong>{{ profile.location }}</strong></li>
 				{% endif %}
+				<li><a href="{% url messages_compose_to profile.user %}">{% trans "Send a message to this user" %}</a></li>
 			</ul>
 		</div>
 		{% if profile.latitude and profile.longitude %}

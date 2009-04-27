@@ -89,6 +89,7 @@ INSTALLED_APPS = (
 
     'userprofile',
     'djangoratings',
+    'messages',
 
     'museic.accounts',
     'museic.content',

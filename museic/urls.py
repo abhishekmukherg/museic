@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('userprofile.urls')),
     (r'^collaborations/', include('museic.content.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
+    (r'^messages/', include('messages.urls')),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
