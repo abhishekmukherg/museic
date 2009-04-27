@@ -94,11 +94,13 @@ class AudioContent(Content):
         autostart: "yes"
         });  
 </script>
+<p id="%(slug)s_download" class="download_audio">%(audio_dl)s</p>
 """ % {'slug': unicode(self.slug).replace('"', ''),
         'message': _('We cannot detect your Flash player'),
         'url': self.file.url,
         'title': unicode(self.title).replace('"', ''),
         'artist': unicode(self.user).replace('"', ''),
+        'audio_dl': _('Download the <a href="%s">collaboration</a>') % self.file.url,
         })
 
     @models.permalink
