@@ -46,7 +46,7 @@ div #submitted_content .metadata {font-size: 1em; padding-left: 1.1em; padding-r
 
 div #content_comments h1 {padding-left: 2.0em;font-size: 1.4em;}
 
-div #submitted_content {font-size: 1em; padding: 15px 20px 15px 20px; background: rgb(255,240,244); min-height: 10em;}
+div #submitted_content {font-size: 1em; padding: 15px 20px 15px 20px; background: rgb(255,240,244); min-height: 15em;}
 
 table.messages {
 	width: 100%;
