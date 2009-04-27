@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     (r'^collaborations/', include('museic.content.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^messages/', include('messages.urls')),
+    (r'^notifications/', include('notification.urls')),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
