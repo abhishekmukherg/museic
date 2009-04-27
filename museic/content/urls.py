@@ -33,7 +33,7 @@ def _get_url_patterns(prefix, model_name, model, form_class):
             name="%scontent_details_slug" % prefix,
             ),
             
-        url(r'^%s/post/' % prefix,
+        url(r'^post/%s/$' % prefix,
             'museic.content.views.create_text_content',
             kwargs={'form_class': form_class},
             name="%scontent_create_object" % prefix,

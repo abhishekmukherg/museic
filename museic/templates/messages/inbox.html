@@ -1,5 +1,6 @@
 {% extends "messages/base.html" %} 
 {% load i18n %} 
+{% load humanize %} 
 {% block content %}
     <h1>{% trans "Inbox" %}</h1>
     <table class="messages">
@@ -8,8 +9,8 @@
         </thead>
         <tbody>
     {% for message in message_list %} 
-        <tr>
-            <td>{{ message.sender }}</td>
+	  <tr class="{% cycle "odd" "even" %}">
+	    <td><a href="{{ message.sender.get_absolute_url }}">{{ message.sender }}</a></td>
             <td>
                 {% if message.new %}<strong>{% endif %}
                 {% if message.replied %}<em>{% endif %}

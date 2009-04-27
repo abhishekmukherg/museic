@@ -43,16 +43,10 @@
 					<a class="nav {% active request "^/accounts/" %}" id="profile" href="{% url profile_overview %}">{% trans "profile" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/collaborations/.*(?!post)" %}" id="collab" href="{% url content_collab_landing %}">{% trans "collaboration" %}</a>
+					<a class="nav {% active request "^/collaborations/(?!post)" %}" id="collab" href="{% url content_collab_landing %}">{% trans "collaboration" %}</a>
 					</li>
 					<li class="navlist">
-					<a class="nav {% active request "^/artists/" %}" id="artists" href="artist.html">{% trans "artists" %}</a>
-					</li>
-					<li class="navlist">
-					<a class="nav {% active request "^/messages/" %}" id="inbox" href="{% url messages_inbox %}">{% trans "inbox" %}</a>
-					</li>
-					<li class="navlist">
-					<a class="nav {% active request "^/collaborations/([^/]+/)?post" %}" id="upload" href="{% url content_post_landing %}">{% trans "upload" %}</a>
+					<a class="nav {% active request "^/collaborations/post" %}" id="upload" href="{% url content_post_landing %}">{% trans "upload" %}</a>
 					</li>
 					</div>
 					

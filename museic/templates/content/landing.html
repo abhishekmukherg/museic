@@ -3,14 +3,14 @@
 {% block content_content %}
 <ul id="landingpage_links">
 	<li>
-	<a href="{{ textcontent }}"
+	<a href="{% url textcontent_create_object %}"
 		class="image_replace"
 		id="text_collab">
 		<img src="{{ MEDIA_URL }}content/text.png" alt="{{ text_title }}" />
 	</a>
 	</li>
 	<li>
-	<a href="{{ audiocontent }}"
+	<a href="{% url audiocontent_create_object %}"
 		class="image_replace"
 		id="audio_collab">
 		<img src="{{ MEDIA_URL }}content/note.png" alt="{{ audio_title }}" />
