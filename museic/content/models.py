@@ -59,7 +59,6 @@ class Content(models.Model):
     class Meta:
         abstract = True
 
-
 class TextContent(Content):
     
     """
@@ -67,6 +66,12 @@ class TextContent(Content):
     """
     
     text = models.TextField()
+
+    verbose_name = _("Text Collaboration")
+    verbose_name_plural = _("Text Collaborations")
+
+    class Meta:
+        abstract = False
     
     def __unicode__(self):
         return unicode(self.text)
@@ -83,6 +88,12 @@ class AudioContent(Content):
     """
 
     file = models.FileField(storage=_FILE_STORAGE, upload_to="audio/%Y/%m/%d")
+
+    verbose_name = _("Audio Collaboration")
+    verbose_name_plural = _("Audio Collaborations")
+
+    class Meta:
+        abstract = False
 
     def __unicode__(self):
         return mark_safe(u"""

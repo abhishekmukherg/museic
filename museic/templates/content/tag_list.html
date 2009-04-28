@@ -1,0 +1,27 @@
+{% extends "content/base.html" %}
+
+{% block title %}{{ tags|capfirst }}{% endblock %}
+
+{% block content %}
+{% load navigation %}
+
+<h1>{{ tags }}</h1>
+
+<ul class="tag_list">
+	{% for object,list in object_dict.items %}
+	<li class="object_name">
+	{{ object.verbose_name_plural }}
+	<ul class="object_list">
+		{% for obj in list %}
+		<li><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+		{% endfor %}
+	</ul>
+	</li>
+	{% endfor %}
+</ul>
+{% if is_paginated %}
+{{ paginator }}
+{% endif %}
+
+{% endblock %}
+

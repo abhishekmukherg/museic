@@ -5,4 +5,4 @@ register = template.Library()
 
 @register.filter
 def tagurl(prefix, tag):
-    return reverse(prefix + '_tags', kwargs={'tags': tag.name})
+    return reverse(prefix + '_tags', kwargs={'tag': tag.name})

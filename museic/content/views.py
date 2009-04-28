@@ -5,6 +5,7 @@ Views for user posted content
 import os
 
 from django.contrib.auth.decorators import login_required
+from django.db import models
 from django.views.generic.create_update import get_model_and_form_class
 from django.views.generic.list_detail import object_list
 from django.template import loader
@@ -12,6 +13,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.utils.translation import ugettext
 from django.shortcuts import get_object_or_404
+import museic.content.models
 
 @login_required
 def create_text_content(request, model=None, form_class=None):
@@ -55,8 +57,18 @@ def vote(request, model):
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
-def with_tags(request, model, model_name, tags):
-    return object_list(request,
-            model.tagged.with_all(tags),
-            template_name='content/content_list.html',
-            )
+def with_tags(request, tags):
+    queryset = {}
+    for attr in dir(museic.content.models):
+        item = getattr(museic.content.models, attr)
+        if hasattr(item, 'tagged'):
+            new_set = item.tagged.with_all(tags)
+            if len(new_set):
+                queryset[item] = new_set
+    template = loader.get_template(os.path.join('content',
+        'tag_list.html'))
+    context = RequestContext(request, {
+        'tag': tags,
+        'object_dict': queryset,
+    })
+    return HttpResponse(template.render(context))

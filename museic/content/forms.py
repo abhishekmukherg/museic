@@ -1,9 +1,9 @@
 import museic.content.models
-from django.forms import ModelForm
+from django import forms
 import tagging.forms
 
 
-class ContentForm(ModelForm):
+class ContentForm(forms.ModelForm):
 
     tags = tagging.forms.TagField()
 
@@ -13,6 +13,7 @@ class ContentForm(ModelForm):
     def save(self, *args, **kwargs):
         instance = super(ContentForm, self).save(*args, **kwargs)
         instance.tags = self.cleaned_data['tags']
+        return instance
         
 
 class TextContentForm(ContentForm):
@@ -25,3 +26,7 @@ class AudioContentForm(ContentForm):
     class Meta:
         model = museic.content.models.AudioContent
         exclude = ('user',)
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=50)

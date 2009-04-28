@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, url
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 from museic.content.models import TextContent, AudioContent
+import tagging.views
 import museic.content.forms
 import itertools
 from os.path import join
@@ -51,14 +52,23 @@ def _get_url_patterns(prefix, model_name, model, form_class):
             name="%scontent_vote" % prefix
             ),
 
-        url(r'^%s/tags/(?P<tags>.*)/$' % prefix,
-            'museic.content.views.with_tags',
-            kwargs={'model': model, 'model_name': model_name},
+        url(r'^%s/tags/(?P<tag>.*)/$' % prefix,
+            'tagging.views.tagged_object_list',
+            kwargs={'queryset_or_model': model,
+                'template_name': 'content/content_list.html'},
             name='%s_tags' % prefix,
             ),
         )
 
-urlpatterns = _get_url_patterns('text',
+urlpatterns = patterns('museic.content.views',
+        url(r'^tags/(?P<tags>.*)/',
+            'with_tags',
+            name='content_tags'
+            ),
+        )
+
+
+urlpatterns += _get_url_patterns('text',
                                 'Text Collaborations',
                                 TextContent,
                                 museic.content.forms.TextContentForm,
