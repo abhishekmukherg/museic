@@ -5,10 +5,12 @@
 {% block robots %}noindex,nofollow{% endblock %}
 
 {% block extracss %}
+{{block.super}}
 	<link rel="stylesheet" href="{{ MEDIA_URL }}userprofile/css/ui.datepicker.css" type="text/css" />
 {% endblock %}
 
 {% block extrajs %}
+{{block.super}}
 <script type="text/javascript" src="{{ MEDIA_URL }}userprofile/js/ui.datepicker.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}profile.js"></script>
 {% endblock %}

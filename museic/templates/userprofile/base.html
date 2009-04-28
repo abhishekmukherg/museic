@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}profile.css" type="text/css" />
+{% endblock %}
+
 {% block content %} 
 		{% block userprofile_navigation %}{% endblock %}
 		<div id="columnwrap">
