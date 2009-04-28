@@ -29,4 +29,4 @@ class AudioContentForm(ContentForm):
 
 
 class SearchForm(forms.Form):
-    search = forms.CharField(max_length=50)
+    tags = forms.CharField(max_length=50)

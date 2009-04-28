@@ -18,9 +18,14 @@
 		<div id="header">
 
 			<div id="header_logo" class="logo">
-				<h1 id="logo">{% trans "museic.com" %} <span id="sub"> {% trans "the collaboratory" %} </span><span id="topglinks">
-						</span>
-					</h1>
+				<div id="logo">
+					<h1>{% trans "museic.com" %}</h1><h2>{% trans "the collaboratory" %}</h2>
+					<div id="search_box">
+					<form action="{% url content_tags %}" method="GET">
+						{{ search_form }}
+						<input type="submit" value="{% trans 'Search' %}" />
+					</form>
+					</div>
 
 					
 				</div>

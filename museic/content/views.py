@@ -57,7 +57,14 @@ def vote(request, model):
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
-def with_tags(request, tags):
+def with_tags(request):
+    if 'tags' in request.GET:
+        tags = request.GET['tags']
+    elif 'id_tags' in request.GET:
+        tags = request.GET['id_tags']
+    else:
+        assert False
+
     queryset = {}
     for attr in dir(museic.content.models):
         item = getattr(museic.content.models, attr)

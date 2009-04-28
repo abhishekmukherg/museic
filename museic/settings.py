@@ -64,6 +64,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
                                 "django.core.context_processors.media",
                                 "django.core.context_processors.request",
                                 "museic.accounts.context_processors.login_form",
+                                "museic.content.context_processors.search_form",
                                 )
 
 

@@ -2,14 +2,14 @@
 
 {% block content_content %}
 <ul id="landingpage_links">
-	<li>
+	<li id="first_link">
 	<a href="{% url textcontent_object_list %}"
 		class="image_replace"
 		id="text_collab">
 		<img src="{{ MEDIA_URL }}content/text.png" alt="{{ text_title }}" />
 	</a>
 	</li>
-	<li>
+	<li id="second_link">
 	<a href="{% url audiocontent_object_list %}"
 		class="image_replace"
 		id="audio_collab">

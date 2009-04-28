@@ -1,5 +1,5 @@
 import museic.content.forms
 
-def login_form(request):
+def search_form(request):
     return {'search_form': museic.content.forms.SearchForm()}
 

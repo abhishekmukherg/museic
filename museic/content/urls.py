@@ -61,7 +61,7 @@ def _get_url_patterns(prefix, model_name, model, form_class):
         )
 
 urlpatterns = patterns('museic.content.views',
-        url(r'^tags/(?P<tags>.*)/',
+        url(r'^tags/$',
             'with_tags',
             name='content_tags'
             ),
