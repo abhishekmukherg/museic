@@ -32,7 +32,9 @@
 						{% else %}
 						<li>
 						<form method="POST" action="{% url login %}?next={{ request.path|notlogout }}">
-						{{login_form}}
+						<ul>
+						{{login_form.as_ul}}
+						</ul>
 						<input type="submit" value="{% trans 'Login' %}" />
 						</form>
 						</li>

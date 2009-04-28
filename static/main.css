@@ -17,6 +17,9 @@ div#global_user_box li {list-style-image:none; list-style-position:outside; list
 #global_user_box input {width: 93%;}
 #global_user_box label,
 #global_user_box input[type="submit"] {display: none;}
+#global_user_box li,
+#global_user_box ul,
+#global_user_box form {margin: 0; padding: 0;}
 
 div#messages {color: black; background-color: #ffdfb2; padding: 0.5em;}
 div#messages ul,
