@@ -63,18 +63,18 @@
 					</div>
 					
 			</div>
-			{% if messages %}
-			<div id="messages"><ul style="list-style: none;">
-			<script lang="javascript"> var i = 0; var c = {{ messages|length }};</script>
-			{% for message in messages %}
-			<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); i++ ; if (i == c) $('#messages').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
-			</div>
-			{% endfor %}
-			</ul>
-			{% endif %}
-			
 			
 		</div>
+		{% if messages %}
+		<div id="messages"><ul style="list-style: none;">
+		<script lang="javascript"> var i = 0; var c = {{ messages|length }};</script>
+		{% for message in messages %}
+		<li class="success" id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); i++ ; if (i == c) $('#messages').fadeOut(); return false;"><small style="float: right;">{% trans "clear" %}</small></a> {{ message }}</li>
+		</div>
+		{% endfor %}
+		</ul>
+		{% endif %}
+
 		<div id="content">
 		{% block content %}{% endblock %}
 		</div>
