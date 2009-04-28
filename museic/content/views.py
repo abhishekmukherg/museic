@@ -6,6 +6,7 @@ import os
 
 from django.contrib.auth.decorators import login_required
 from django.views.generic.create_update import get_model_and_form_class
+from django.views.generic.list_detail import object_list
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
@@ -53,3 +54,9 @@ def vote(request, model):
         'vote_accepted.html'))
     context = RequestContext(request)
     return HttpResponse(template.render(context))
+
+def with_tags(request, model, model_name, tags):
+    return object_list(request,
+            model.tagged.with_all(tags),
+            template_name='content/content_list.html',
+            )

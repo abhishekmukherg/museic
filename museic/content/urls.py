@@ -44,10 +44,18 @@ def _get_url_patterns(prefix, model_name, model, form_class):
             kwargs=list_dict,
             name="%scontent_object_list" % prefix,
             ),
+
         url(r'^%s/rate/$' % prefix,
             'museic.content.views.vote',
             kwargs={'model': model},
-            name="%scontent_vote" % prefix),
+            name="%scontent_vote" % prefix
+            ),
+
+        url(r'^%s/tags/(?P<tags>.*)/$' % prefix,
+            'museic.content.views.with_tags',
+            kwargs={'model': model, 'model_name': model_name},
+            name='%s_tags' % prefix,
+            ),
         )
 
 urlpatterns = _get_url_patterns('text',

@@ -74,6 +74,7 @@ class TextContent(Content):
     @models.permalink
     def get_absolute_url(self):
         return ("textcontent_details_id", [str(self.id)])
+tagging.register(TextContent)
 
 class AudioContent(Content):
 
@@ -106,3 +107,4 @@ class AudioContent(Content):
     @models.permalink
     def get_absolute_url(self):
         return ('audiocontent_details_id', [str(self.id)])
+tagging.register(AudioContent)

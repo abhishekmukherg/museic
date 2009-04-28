@@ -68,6 +68,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 
 
 ROOT_URLCONF = 'museic.urls'
+FORCE_LOWERCASE_TAGS = True
 
 AUTH_PROFILE_MODULE = 'accounts.userprofile'
 ABSOLUTE_URL_OVERRIDES = {
@@ -92,6 +93,7 @@ INSTALLED_APPS = (
     'djangoratings',
     'messages',
     'notification',
+    'tagging',
 
     'museic.accounts',
     'museic.content',

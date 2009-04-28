@@ -1,6 +1,7 @@
 {% extends "content/base.html" %}
 {% load i18n %}
 {% load comments %}
+{% load content %}
 {% load microformats %}
 {% load humanize %}
 {% load ratings %}
@@ -36,6 +37,13 @@
 	{{ object.pub_date|microformats_date:"pub_date" }}{{ object.pub_date|naturalday }}</abbr>
 	<div id="content_author" class="author">
 		<a href="{{ object.user.get_absolute_url }}">{{ object.user }}</a>
+	</div>
+	<div>
+		<ul id="tags">
+		{% for tag in object.tags %}
+		<li><a href="{{ prefix|tagurl:tag }}">{{ tag.name }}</a></li>
+		{% endfor %}
+		</ul>
 	</div>
 	<div class="rating">
 		<ul class="star-rating">

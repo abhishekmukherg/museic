@@ -4,6 +4,5 @@ from django.core.urlresolvers import reverse
 register = template.Library()
 
 @register.filter
-@stringfilter
-def url(var):
-    return reverse(var)
+def tagurl(prefix, tag):
+    return reverse(prefix + '_tags', kwargs={'tags': tag.name})
