@@ -7,6 +7,7 @@ div#header {width: 100%; background-color:rgb(255,133,46); margin-bottom: 0.8em;
 div#header, div#global_user_box {height: 4.5em;}
 div#header_logo {height: 3.3em; width:80%; background-color:rgb(255,164,45);}
 div#header_logo h1 {margin: 0; padding: 0.2em; color: white; padding-left: 0.5em; font-weight:lighter;}
+#search_box { float: right; position: absolute; top: 0; right: 21%;}
 div#global_user_box { float: right; position: absolute; width: 20%; height: 4.2em; top: 0; right: 0; }
 div#global_user_box ul {margin: 0.1em; padding: 0; text-align: right;}
 div#global_user_box a:link,
@@ -180,3 +181,8 @@ div.calendar select {
 	display: none;
 }
 
+#search_box label { 
+	display: none;
+}
+
+#logo { width: 9.5em; }
